@@ -7,6 +7,13 @@ import copy
 import shutil
 import bibtexparser
 
+# Edit to match your CCV XML file name
+tree = ET.parse('CCV-10026565.xml')
+
+# Edit to match your Bibtex file name exported from NASA/ADS
+with open('export-bibtex.bib') as bibtex_file:
+    bibtex_database = bibtexparser.load(bibtex_file)
+
 
 def detex(str):
     str = str.replace('}','')
@@ -44,10 +51,6 @@ journal_map = {'\\apj': 'The Astrophysical Journal',
                '\\planss': 'Planetary and Space Science',
                '\\jrasc': 'Journal of the Royal Astronomical Society of Canada'}
 
-tree = ET.parse('CCV-10026565.xml')
-
-with open('export-bibtex.bib') as bibtex_file:
-    bibtex_database = bibtexparser.load(bibtex_file)
 
 nsdict = {'sec': "generic-cv/"}
 
